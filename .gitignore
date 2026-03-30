@@ -1,18 +1,66 @@
-# dependencies
-node_modules
+```
+# Dependencies
+node_modules/
 
-# misc
-.DS_Store
-.history
+# Environment
+.env
+.env.local
+*.env.*
 
-# build
+# Logs and temp files
+*.log
+*.tmp
+
+# Editors
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+.env
+
+# Build artifacts
 dist/
+build/
+*.min.js
+*.min.css
+coverage/
+htmlcov/
+.coverage
 
-# debug
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+*.swp
+*.swo
+*.tmp
+*.log
+
+# Testing
+.mypy_cache/
+.pytest_cache/
+.nyc_output/
+coverage/
+
+# Node.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
-.env
+# Compiled files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
+```

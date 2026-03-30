@@ -12,7 +12,7 @@ const LOGO_VALUE = 255;          // Color value for white watermark
  * Remove watermark using reverse alpha blending
  *
  * Principle:
- * Gemini adds watermark: watermarked = α × logo + (1 - α) × original
+ * AI watermark adds: watermarked = α × logo + (1 - α) × original
  * Reverse solve: original = (watermarked - α × logo) / (1 - α)
  *
  * @param {ImageData} imageData - Image data to process (will be modified in place)

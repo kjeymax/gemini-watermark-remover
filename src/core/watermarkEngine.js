@@ -15,7 +15,7 @@ import BG_96_PATH from '../assets/bg_96.png';
  * @returns {Object} Watermark configuration {logoSize, marginRight, marginBottom}
  */
 export function detectWatermarkConfig(imageWidth, imageHeight) {
-    // Gemini's watermark rules:
+    // AI watermark rules (Gemini pattern):
     // If both image width and height are greater than 1024, use 96×96 watermark
     // Otherwise, use 48×48 watermark
     if (imageWidth > 1024 && imageHeight > 1024) {
