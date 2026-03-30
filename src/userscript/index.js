@@ -62,9 +62,9 @@ async function processImage(imgElement) {
     imgElement.src = URL.createObjectURL(processedBlob);
     imgElement.dataset.watermarkProcessed = 'true';
 
-    console.log('[Gemini Watermark Remover] Processed image');
+    console.log('[AI Watermark Remover Pro] Processed image');
   } catch (error) {
-    console.warn('[Gemini Watermark Remover] Failed to process image:', error);
+    console.warn('[AI Watermark Remover Pro] Failed to process image:', error);
     imgElement.dataset.watermarkProcessed = 'failed';
     imgElement.src = originalSrc;
   } finally {
@@ -76,14 +76,14 @@ const processAllImages = () => {
   const images = findGeminiImages();
   if (images.length === 0) return;
 
-  console.log(`[Gemini Watermark Remover] Found ${images.length} images to process`);
+  console.log(`[AI Watermark Remover Pro] Found ${images.length} images to process`);
   images.forEach(processImage);
 };
 
 const setupMutationObserver = () => {
   new MutationObserver(debounce(processAllImages, 100))
     .observe(document.body, { childList: true, subtree: true });
-  console.log('[Gemini Watermark Remover] MutationObserver active');
+  console.log('[AI Watermark Remover Pro] MutationObserver active');
 };
 
 async function processImageBlob(blob) {
@@ -102,7 +102,7 @@ const { fetch: origFetch } = unsafeWindow;
 unsafeWindow.fetch = async (...args) => {
   const url = typeof args[0] === 'string' ? args[0] : args[0]?.url;
   if (GEMINI_URL_PATTERN.test(url)) {
-    console.log('[Gemini Watermark Remover] Intercepting:', url);
+    console.log('[AI Watermark Remover Pro] Intercepting:', url);
 
     const origUrl = replaceWithNormalSize(url);
     if (typeof args[0] === 'string') args[0] = origUrl;
@@ -119,7 +119,7 @@ unsafeWindow.fetch = async (...args) => {
         headers: response.headers
       });
     } catch (error) {
-      console.warn('[Gemini Watermark Remover] Processing failed:', error);
+      console.warn('[AI Watermark Remover Pro] Processing failed:', error);
       return response;
     }
   }
@@ -129,14 +129,14 @@ unsafeWindow.fetch = async (...args) => {
 
 (async function init() {
   try {
-    console.log('[Gemini Watermark Remover] Initializing...');
+    console.log('[AI Watermark Remover Pro] Initializing...');
     engine = await WatermarkEngine.create();
 
     processAllImages();
     setupMutationObserver();
 
-    console.log('[Gemini Watermark Remover] Ready');
+    console.log('[AI Watermark Remover Pro] Ready');
   } catch (error) {
-    console.error('[Gemini Watermark Remover] Initialization failed:', error);
+    console.error('[AI Watermark Remover Pro] Initialization failed:', error);
   }
 })();
